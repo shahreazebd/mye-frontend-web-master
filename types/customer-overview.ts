@@ -1,0 +1,20 @@
+export type CustomarOverview = {
+  id: number;
+  order_id: number;
+  buyer_name: string;
+  address1: string;
+  address2: string;
+  city: string;
+  state: string;
+  post_code: string;
+  country: string;
+  phone: string | null;
+  reference_id: string | null;
+  email: string | null;
+  createdAt: string;
+  updatedAt: string;
+  total_number_of_order: number;
+  quantity: number;
+  total_spend: number;
+  last_order_id: string;
+};

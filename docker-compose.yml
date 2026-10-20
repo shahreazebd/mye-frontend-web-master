@@ -1,0 +1,15 @@
+version: "3.3"
+
+services:
+  mye_frontend:
+    container_name: mye_frontend_web
+    image: mye_frontend_web
+    ports:
+      - 3000:3000
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next

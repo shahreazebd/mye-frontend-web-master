@@ -1,0 +1,513 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #0f172a;
+
+    --heroBackground: #ececfe;
+    --foreground: #0f172a;
+
+    --automationShippingBg: #fff6ea;
+    --foreground: #0f172a;
+
+    --smartCommunicationBg: #fff0f0;
+    --foreground: #0f172a;
+
+    --majorCarrierBg: #f4f9ff;
+    --foreground: #0f172a;
+
+    --singleIntegrationBg: #97a0ff;
+    --foreground: #0f172a;
+
+    --footer: #03032b;
+    --footer-foreground: #e2e2e2;
+
+    --shippingRatesBg: #f3f6fb;
+    --foreground: #0f172a;
+
+    --faqBg: #fff5f1;
+    --foreground: #0f172a;
+
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+
+    --popover: #ffffff;
+    --popover-foreground: #0f172a;
+
+    --border: #e2e8f0;
+    --input: #e2e8f0;
+
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+
+    --primary: #065089;
+    --primary-foreground: #f8fafc;
+
+    --newPrimary: #6f6af8;
+
+    --secondary: #ffc677;
+    --secondary-foreground: #ffffff;
+
+    --accent: #f1f5f9;
+    --accent-foreground: #0f172a;
+
+    --dark: #0f172a;
+    --dark-foreground: #f8fafc;
+
+    --destructive: #ff0000;
+    --destructive-foreground: #f8fafc;
+
+    --ring: #94a3b8;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: #030711;
+    --foreground: #e1e7ef;
+
+    --heroBackground: #030711;
+    --heroBackground-foreground: #e1e7ef;
+
+    --automationShippingBg: #030711;
+    --automationShippingBg-foreground: #e1e7ef;
+
+    --smartCommunicationBg: #030711;
+    --smartCommunicationBg-foreground: #e1e7ef;
+
+    --majorCarrierBg: #030711;
+    --majorCarrierBg-foreground: #e1e7ef;
+
+    --shippingRatesBg: #030711;
+    --foreground: #e1e7ef;
+
+    --faqBg: #030711;
+    --foreground: #e1e7ef;
+
+    --singleIntegrationBg: #030711;
+    --foreground: #e1e7ef;
+
+    --footer: #030711;
+    --footer-foreground: #e1e7ef;
+
+    --muted: #0f1629;
+    --muted-foreground: #7f8ea3;
+
+    --accent: #1d283a;
+    --accent-foreground: #f8fafc;
+
+    --popover: #030711;
+    --popover-foreground: #94a3b8;
+
+    --border: #1d283a;
+    --input: #1d283a;
+
+    --card: #030711;
+    --card-foreground: #e1e7ef;
+
+    --primary: #f8fafc;
+    --primary-foreground: #020205;
+
+    --newPrimary: #6f6af8;
+
+    --secondary: #0f172a;
+    --secondary-foreground: #f8fafc;
+
+    --dark: #f8fafc;
+    --dark-foreground: #0f172a;
+
+    --destructive: #811d1d;
+    --destructive-foreground: #f8fafc;
+
+    --ring: #1d283a;
+
+    --radius: 0.5rem;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"] {
+  --moz-appearance: textfield; /* Firefox */
+}
+
+.recharts-pie-sector:focus {
+  border: none !important;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply scroll-smooth bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .popover-trigger-width {
+    width: var(--radix-popover-trigger-width);
+    max-height: var(--radix-popover-content-available-height);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  font-style: normal;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 57px;
+  line-height: 60px;
+}
+
+h3 {
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 48px;
+}
+
+h4 {
+  font-weight: 700;
+  font-size: 32.311px;
+  line-height: 39px;
+}
+
+h5 {
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 32px;
+}
+
+h6 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 32px;
+}
+
+p {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+small {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+li {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.majorCarrier {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+}
+
+.smartCommunication {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.myeFree {
+  clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%);
+  background: url("/images/home/myeFree.png") no-repeat center center;
+}
+
+.footer {
+  clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
+}
+
+.faq {
+  clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 100%);
+}
+
+.real-time-reporting {
+  clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+}
+
+.manage-shipment {
+  clip-path: polygon(0 6%, 100% 0, 100% 100%, 0% 100%);
+}
+
+.indexedStep {
+  color: white;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  background-color: rgba(211, 211, 211, 0.8);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.indexedStep.accomplished {
+  background-color: rgba(0, 116, 217, 1);
+}
+
+@media only screen and (max-width: 1024px) {
+  .footer {
+    clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.stepper input[type="radio"] {
+  accent-color: black;
+}
+
+.inputStyle {
+  width: 3rem !important;
+  height: 50px;
+  margin: 0 1rem;
+  font-size: 2rem;
+}
+
+.inputStyle input:focus {
+  outline: none;
+}
+
+.otp-div > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 
+
+  md screens
+
+*/
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 35px;
+    line-height: 40px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 15px;
+  }
+
+  .footer {
+    clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .faq {
+    clip-path: polygon(0 0, 100% 0%, 100% 96%, 0% 100%);
+  }
+
+  .real-time-reporting {
+    clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .majorCarrier {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%);
+  }
+
+  .myeFree {
+    clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 100%);
+  }
+
+  .manage-shipment {
+    clip-path: polygon(0 3%, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  h3 {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: center;
+  }
+}
+
+/* 
+
+  sm screens
+
+*/
+
+@media only screen and (max-width: 640px) {
+  h1 {
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  p {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+/* 
+
+  scrollbar style
+  
+*/
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #a8acb1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #5c656f;
+  border-radius: 10px;
+}
+
+/* .overflow-x-scroll::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  height: 6px;
+}
+
+.overflow-x-scroll::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  height: 6px;
+  border-radius: 10px;
+}
+
+.overflow-x-scroll::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  height: 6px;
+  background-color: #5c656f;
+  border-radius: 10px;
+}
+
+.overflow-x-scroll::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #8792a1;
+  border-radius: 10px;
+}
+
+.overflow-x-scroll::-webkit-scrollbar-thumb:active,
+body::-webkit-scrollbar-thumb:active {
+  background-color: #6e7783;
+  border-radius: 10px;
+} */
+
+/* Set header to stick to the top of the container. */
+
+/* table {
+  border-collapse: collapse;
+}
+
+thead tr th {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+} */
+
+.recharts-wrapper > svg > g {
+  outline: none !important;
+}
+
+.pages h1 {
+  font-size: 36px;
+  line-height: 48px;
+  margin: 40px 0 15px 0;
+}
+
+.pages p {
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.pages ul > ul {
+  padding-left: 50px;
+}
+
+.pages ul li {
+  line-height: 45px;
+
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.pages ul > ul li {
+  line-height: 45px;
+}
+
+.pages ol > ol li {
+  line-height: 45px;
+}
+
+.pages ul {
+  margin-bottom: 30px;
+}
+
+.pages td {
+  border: 2px solid #e1e7ef;
+  padding: 10px;
+}
+
+.pages table {
+  margin-bottom: 50px;
+}
+
+.recharts-legend-item-text {
+  font-size: 12px !important;
+}
+
+/* Fade In Fade Out Animation */
+.fadeinout {
+  animation: fadeinout 2s infinite;
+}
+
+@keyframes fadeinout {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+/* text marque */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.marquee-content {
+  display: inline-block;
+  animation: marquee 10s linear infinite;
+}

@@ -1,0 +1,31 @@
+.popWrap {
+  width: fit-content;
+}
+
+.popTitle {
+  display: block;
+  font-size: 1rem;
+  color: #111;
+}
+
+.popDesc {
+  display: block;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.popDivider {
+  border-color: #ccc;
+  opacity: 0.1;
+}
+
+.popActionWrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.btn {
+  background-color: #fff;
+  border: #ccc solid 1px;
+  border-radius: 4px;
+}

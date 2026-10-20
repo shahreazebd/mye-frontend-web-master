@@ -1,0 +1,147 @@
+import { getInitials, groupBy } from "@/utils/helpers";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+import { useGetOrdersByChannel } from "@/hooks/queries/dashboard/use-get-orders-by-channel";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { NoDataPlaceholder } from "@/components/core/no-data-placeholder";
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../ui/card";
+
+dayjs.extend(relativeTime);
+
+export default function MaxOrderChannel() {
+  const { data } = useGetOrdersByChannel();
+
+  const ordersByChannel = groupBy(
+    data?.filter((e) => e?.channel_details && e?.market_place !== "AMZON") || [],
+    (e) => e?.market_place
+  );
+
+  return (
+    <Card className="h-full">
+      <CardHeader>
+        <CardTitle>Maximum Orders From</CardTitle>
+        <CardDescription>See when your channels will expire</CardDescription>
+      </CardHeader>
+      <CardContent className="max-h-[270px] overflow-y-auto">
+        {data?.length === 0 ? (
+          <NoDataPlaceholder title="No order found" />
+        ) : (
+          ordersByChannel.map((channel) => {
+            const total = channel?.values?.reduce(
+              (acc, cur) => acc + cur?.total_count,
+              0
+            );
+
+            return (
+              <div key={channel?.key} className="mb-4 flex gap-3">
+                <Avatar className="size-9 shrink-0 sm:flex">
+                  <AvatarImage
+                    src={`/logos/marketplaces/round/${channel?.key?.toLowerCase()}.svg`}
+                    alt="Amazon"
+                  />
+                  <AvatarFallback className="uppercase">
+                    {getInitials(channel?.key)}
+                  </AvatarFallback>
+                </Avatar>
+
+                <div className="grid w-full grid-cols-3">
+                  <div className="col-span-2">
+                    <p className="pb-0.5 text-sm font-bold capitalize text-gray-800">
+                      {channel?.key?.toLowerCase()}
+                    </p>
+
+                    {channel.values.map((val) => (
+                      <p key={val.channel_uid} className="text-xs text-gray-500">
+                        {val?.channel_details?.name}
+                      </p>
+                    ))}
+                  </div>
+
+                  <div>
+                    <div className="text-sm font-medium text-gray-800">{total}</div>
+
+                    {channel?.values?.map((val) => (
+                      <div key={val?.channel_uid} className="ml-1 text-xs text-gray-500">
+                        {val?.total_count} Orders
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        )}
+
+        {/* <div className="mb-4 flex gap-3">
+          <Avatar className="size-9 shrink-0 sm:flex">
+            <AvatarImage src={`/logos/marketplaces/round/amazon.svg`} alt="Amazon" />
+            <AvatarFallback className="uppercase">amazon</AvatarFallback>
+          </Avatar>
+          <div className="grid">
+            <p className="pb-0.5 text-sm font-bold text-gray-800">Amazon</p>
+
+            <p className="text-xs text-gray-500">LC Amazon</p>
+            <p className="text-xs text-gray-500">Rough&Tough Amazon</p>
+            <p className="text-xs text-gray-500">Prosizzling Amazon</p>
+          </div>
+          <div className="ml-auto mr-10">
+            <div className="text-sm font-medium text-gray-800">9789</div>
+
+            <div className="ml-1 text-xs text-gray-500">7984 Orders</div>
+            <div className="ml-1 text-xs text-gray-500">1127 Orders</div>
+            <div className="ml-1 text-xs text-gray-500">678 Orders</div>
+          </div>
+        </div>
+        <div className="mb-4 flex gap-3">
+          <Avatar className="size-9 shrink-0 sm:flex">
+            <AvatarImage src={`/logos/marketplaces/round/ebay.svg`} alt="eBay" />
+            <AvatarFallback className="uppercase">ebay</AvatarFallback>
+          </Avatar>
+          <div className="grid">
+            <p className="pb-0.5 text-sm font-bold text-gray-800">eBay</p>
+
+            <p className="text-xs text-gray-500">Strom Island UK</p>
+            <p className="text-xs text-gray-500">Prosizzling Ebay UK</p>
+            <p className="text-xs text-gray-500">Apparel21</p>
+            <p className="text-xs text-gray-500">Rough&Tough eBay</p>
+          </div>
+          <div className="ml-auto mr-10">
+            <div className="text-sm font-medium text-gray-800">7589</div>
+
+            <div className="ml-1 text-xs text-gray-500">3686 Orders</div>
+            <div className="ml-1 text-xs text-gray-500">1766 Orders</div>
+            <div className="ml-1 text-xs text-gray-500">1262 Orders</div>
+            <div className="ml-1 text-xs text-gray-500">875 Orders</div>
+          </div>
+        </div>
+        <div className="flex gap-3">
+          <Avatar className="size-9 shrink-0 sm:flex">
+            <AvatarImage
+              src={`/logos/marketplaces/round/woocommerce.svg`}
+              alt="WooCommerce"
+            />
+            <AvatarFallback className="uppercase">woocommerce</AvatarFallback>
+          </Avatar>
+          <div className="grid">
+            <p className="pb-0.5 text-sm font-bold text-gray-800">WooCommerce</p>
+
+            <p className="text-xs text-gray-500">AFS Fashion</p>
+            <p className="text-xs text-gray-500">Long Island City</p>
+            <p className="text-xs text-gray-500">Westace London</p>
+            <p className="text-xs text-gray-500">Rough&Tough Woocommerce</p>
+          </div>
+          <div className="ml-auto mr-10">
+            <div className="text-sm font-medium text-gray-800">3589</div>
+
+            <div className="ml-1 text-xs text-gray-500">1286 Orders</div>
+            <div className="ml-1 text-xs text-gray-500">857 Orders</div>
+            <div className="ml-1 text-xs text-gray-500">750 Orders</div>
+            <div className="ml-1 text-xs text-gray-500">696 Orders</div>
+          </div>
+        </div> */}
+      </CardContent>
+    </Card>
+  );
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "next/core-web-vitals",
+    "plugin:tailwindcss/recommended",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended",
+    "prettier"
+  ],
+  "env": {
+    "jest/globals": true,
+    "es2020": true
+  },
+  "globals": {
+    "globalThis": "readonly"
+  },
+  "plugins": ["tailwindcss", "jest"],
+  "rules": {
+    "@next/next/no-html-link-for-pages": "off",
+    "react/jsx-key": "off",
+    "tailwindcss/no-custom-classname": "off",
+    "no-console": "warn",
+    "no-duplicate-imports": "error",
+    "no-var": "error",
+    "eqeqeq": "error",
+    "@next/next/no-img-element": "error",
+    "react-hooks/exhaustive-deps": "off",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+    "no-unused-vars": "warn"
+  },
+  "settings": {
+    "tailwindcss": {
+      "callees": ["cn"],
+      "config": "tailwind.config.js"
+    },
+    "next": {
+      "rootDir": ["./"]
+    }
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx",
+        "**/__tests__/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "extends": ["plugin:testing-library/react"]
+    }
+  ]
+}

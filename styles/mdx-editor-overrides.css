@@ -1,0 +1,125 @@
+/* MDX Editor overrides with higher specificity */
+.mdxeditor {
+  --notion-code-background: rgb(247, 246, 243);
+  --code-background: var(--notion-code-background);
+  --editor-header-button-color-selected: rgb(46, 170, 220);
+  --editor-header-button-color: rgb(55, 53, 47);
+  margin-top: 0.5rem;
+}
+
+.mdxeditor {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.375rem;
+}
+
+.mdxeditor .toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.mdxeditor .content-editable-wrapper {
+  background-color: white;
+  min-height: 300px;
+  height: auto;
+}
+
+/* Ensure buttons and controls are visible */
+.mdxeditor button[data-active="true"] {
+  background-color: var(--editor-header-button-color-selected);
+  color: white;
+}
+
+.mdxeditor button {
+  color: var(--editor-header-button-color);
+}
+
+/* Ensure headings are properly styled */
+.mdxeditor h1 {
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+}
+
+.mdxeditor h2 {
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+}
+
+.mdxeditor h3 {
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.mdxeditor h4 {
+  font-size: 1em;
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+}
+
+.mdxeditor h5 {
+  font-size: 0.83em;
+  margin-top: 1.67em;
+  margin-bottom: 1.67em;
+}
+
+.mdxeditor h6 {
+  font-size: 0.67em;
+  margin-top: 2.33em;
+  margin-bottom: 2.33em;
+}
+
+/* Lists styling */
+.mdxeditor ul {
+  list-style: disc;
+  margin-left: 1em;
+  padding-left: 1em;
+}
+
+.mdxeditor ol {
+  list-style: decimal;
+  margin-left: 1em;
+  padding-left: 1em;
+}
+
+/* Code block styling */
+.mdxeditor pre {
+  background-color: var(--code-background);
+  padding: 1em;
+  border-radius: 0.375rem;
+  margin: 1em 0;
+}
+
+.mdxeditor code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  background-color: var(--code-background);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25em;
+}
+
+/* Links styling */
+.mdxeditor a {
+  color: rgb(46, 170, 220);
+  text-decoration: underline;
+}
+
+/* Tables styling */
+.mdxeditor table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.mdxeditor th,
+.mdxeditor td {
+  border: 1px solid #e5e7eb;
+  padding: 0.5em;
+}
